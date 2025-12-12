@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moonlight Eventos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Lato"', 'sans-serif'],
+            },
+            colors: {
+              moonlight: {
+                black: '#050505',
+                dark: '#0a0a0a',
+                paper: '#121212',
+                gold: '#D4AF37',
+                'gold-light': '#FCD34D',
+                'gold-dark': '#B4941F',
+                violet: '#7c3aed', // More vibrant violet (Violet-600)
+                'violet-light': '#a78bfa', // Lighter for glows (Violet-400)
+                'violet-glow': '#8B5CF6'
+              }
+            },
+            animation: {
+              blob: "blob 10s infinite",
+              float: "float 6s ease-in-out infinite",
+              fadeUp: "fadeUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              }
+            },
+            backgroundImage: {
+              'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #FCD34D 50%, #B4941F 100%)',
+              'violet-gradient': 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #e2e8f0;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      /* Custom scrollbar Gold & Violet */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4C1D95; 
+        border-radius: 4px;
+        border: 1px solid #050505;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7c3aed; 
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      }
+      .text-glow-violet {
+        text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+      }
+      .glass-card {
+        background: rgba(20, 20, 20, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      }
+      
+      /* Gold shine effect for buttons */
+      .gold-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .gold-shine::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+        transform: rotate(45deg);
+        transition: 0.5s;
+        opacity: 0;
+      }
+      .gold-shine:hover::after {
+        opacity: 1;
+        left: 100%;
+      }
+
+      /* Selection Color */
+      ::selection {
+        background: #7c3aed;
+        color: white;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.32.0",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
